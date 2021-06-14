@@ -33,11 +33,14 @@ public class Main extends Application{
         window.setTitle("SecureNotePad");
 
         Registration reg = new Registration();
+        Login log = new Login();
 
         Label label = new Label("Welcome to SecureNotePad");
 
         login = new Button();
         login.setText("Login");
+        login.setOnAction(event -> log.logInVerification(window));
+
 
 //        login.setOnAction(event -> t.print("1"));
 

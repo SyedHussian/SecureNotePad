@@ -16,6 +16,7 @@ public class Registration {
     public void register(Stage regStage) {
         Main main = new Main();
 
+
 //        regStage.initModality(Modality.APPLICATION_MODAL); //Block other input events until this is taken care off
         regStage.setTitle("Registration");
         regStage.setMinWidth(300);
@@ -71,8 +72,23 @@ public class Registration {
         signUpBtn.setOnAction(e -> {
             if (isName(fnameInput, lnameInput) && isEmail(emailInput) && isPassword(passInput)) {
                 // save the values in database
-                System.out.println("complete");
+                JDBC jdbc = new JDBC();
 
+                if (!jdbc.checkforDup(emailInput.getText())) {
+                    try {
+                        main.start(regStage);
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
+
+                jdbc.insert(fnameInput.getText(), lnameInput.getText(), emailInput.getText(), passInput.getText());
+
+                try {
+                    main.start(regStage);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
             }
         });
 
