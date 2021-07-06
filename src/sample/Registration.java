@@ -16,8 +16,6 @@ public class Registration {
     public void register(Stage regStage) {
         Main main = new Main();
 
-
-//        regStage.initModality(Modality.APPLICATION_MODAL); //Block other input events until this is taken care off
         regStage.setTitle("Registration");
         regStage.setMinWidth(300);
 
@@ -63,7 +61,7 @@ public class Registration {
         GridPane.setConstraints(passLabel, 0, 4);
 
         //Pass input
-        TextField passInput = new TextField();
+        PasswordField passInput = new PasswordField();
         passInput.setPromptText("Exactly 4 digit");
         GridPane.setConstraints(passInput, 1, 4);
 
